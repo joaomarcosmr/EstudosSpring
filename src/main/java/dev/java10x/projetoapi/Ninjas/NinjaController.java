@@ -1,4 +1,4 @@
-package dev.java10x.projetoapi;
+package dev.java10x.projetoapi.Ninjas;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
