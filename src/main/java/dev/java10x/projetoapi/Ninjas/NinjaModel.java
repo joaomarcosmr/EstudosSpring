@@ -20,6 +20,9 @@ public class NinjaModel {
     private Long id;
 
     @Column(nullable = false)
+    private String rank;
+
+    @Column(nullable = false)
     private String nome;
 
     @Column(unique = true)
