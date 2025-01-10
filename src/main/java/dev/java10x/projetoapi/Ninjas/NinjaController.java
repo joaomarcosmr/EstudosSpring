@@ -2,9 +2,17 @@ package dev.java10x.projetoapi.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
+
+    private final NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     @GetMapping("/boasvindas")
     public String boasVindas(){
@@ -12,27 +20,27 @@ public class NinjaController {
     }
 
     @PostMapping("/criar")
-    public String criarNinja(){
-        return "Criado com sucesso!";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninjaModel){
+        return ninjaService.criarNinja(ninjaModel);
     }
 
     @GetMapping("/all")
-    public String allNinjas(){
-        return "Ninjas";
+    public List<NinjaModel> listarNinjas(){
+        return ninjaService.listarNinjas();
     }
 
-    @GetMapping("/todosID")
-    public String mostrarNinjasID(){
-        return "Ninjas por ID";
+    @GetMapping("/todos/{id}")
+    public NinjaModel mostrarNinjasID(@PathVariable Long id){
+        return ninjaService.listarNinjaPorId(id);
     }
 
-    @PutMapping("/alterarID")
-    public String alterarNinjasID(){
-        return "Alterado com sucesso!";
+    @PutMapping("/alterar/{id}")
+    public NinjaModel alterarNinjasID(@PathVariable Long id, @RequestBody NinjaModel ninjaModel){
+        return ninjaService.atualizarNinja(id, ninjaModel);
     }
 
-    @DeleteMapping("/deletar")
-    public String deletarNinjas(){
-        return "Deletado com sucesso!";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarNinjas(@PathVariable Long id){
+        ninjaService.removerNinja(id);
     }
 }
