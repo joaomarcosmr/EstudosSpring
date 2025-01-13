@@ -4,8 +4,6 @@ import dev.java10x.projetoapi.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Data
 @Getter
 @Setter
@@ -14,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NinjaModel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
